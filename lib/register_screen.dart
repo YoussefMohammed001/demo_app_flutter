@@ -1,6 +1,10 @@
-import 'dart:ffi';
 
-import 'package:demo_app/home_screen.dart';
+
+
+
+
+import 'dart:collection';
+
 import 'package:demo_app/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -85,19 +89,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     children: [
                       TextFormField(
-                        textInputAction: TextInputAction.next ,
+                         textInputAction: TextInputAction.next ,
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value){
+                        validator: (value) {
                           if(value == null || value.isEmpty){
                             return"please enter your email";
+                          } else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                            return "please enter valid email";
                           }
                           return null;
+
                         },
+
+
+
+
                         decoration: const InputDecoration(
 
                           hintText: "Email",
                           labelText: "Email",
+
                           border: OutlineInputBorder(),
+                          //l
                           prefixIcon: Icon(
                             Icons.email,
                           ),
